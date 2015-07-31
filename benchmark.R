@@ -8,17 +8,6 @@ require(data.table)
 #
 ################################################################################################
 
-# 01a. Get text from Coursera quizzes
-################################################################################################
-
-quizzes <- readLines('data/quizzes.txt', encoding = 'UTF-8')
-
-# verify checksum of loaded lines
-digest(paste0(quizzes, collapse = '||'), 
-       algo='sha256', 
-       serialize=F)==
-    "07697c9cf45891a1f6da633299f35522711a17e65136ba261702e78e0abd09e1"
-
 
 # 01b. Get text from randomly selected tweets
 ################################################################################################
@@ -224,7 +213,6 @@ predict.baseline <- function(x){c('the', 'on', 'a')}
 ################################################################################################
 benchmark(predict.baseline, 
           # additional parameters to be passed to the prediction function can be inserted here
-          sent.list = list(# 'quizzes' = quizzes, 
-                           'tweets' = tweets, 
+          sent.list = list('tweets' = tweets, 
                            'blogs' = blogs), 
           ext.output = T)
