@@ -132,6 +132,7 @@ benchmark <- compiler::cmpfun(function(FUN, ..., sent.list, ext.output=T) {
     overall.precision.top3 = 100 * result[,sum(hit.count.top3/total.count)/.N]
     overall.precision.top1 = 100 * result[,sum(hit.count.top1/total.count)/.N]
     average.runtime = 1000 * result[,sum(total.runtime)/sum(total.count)]
+    number.of.predictions = result[,sum(total.count)]
     total.mem.used = sum(unlist(lapply(ls(.GlobalEnv),
                                        function(x) {
                                            object.size(get(x,
@@ -142,11 +143,13 @@ benchmark <- compiler::cmpfun(function(FUN, ..., sent.list, ext.output=T) {
                        'Overall top-1 precision: %.2f %%\n',
                        'Overall top-3 precision: %.2f %%\n',
                        'Average runtime:         %.2f msec\n',
+                       'Number of predictions:   %d\n',
                        'Total memory used:       %.2f MB\n'),
                 overall.score.percent,
                 overall.precision.top1,
                 overall.precision.top3,
                 average.runtime,
+                number.of.predictions,
                 total.mem.used
                 ))
     
