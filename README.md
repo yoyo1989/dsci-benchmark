@@ -7,7 +7,7 @@ Usage:
 ------
 
 0. Download the repository
-0. Extract data.zip into the current folder (password is provided in the Coursera forum)
+0. Extract data.zip into the current folder (password is capstone4)
 0. Open benchmark.R and run the code up to section 03
 0. (optional) create a wrapper function for your prediction function (section 03)
 0. Perform the benchmark (section 04)
